@@ -1,0 +1,18 @@
+# Environment variables
+.env
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Virtual environment
+myenv/
+
+# Django collected static files
+/staticfiles/
+/media/
+
+# Node modules (React frontend)
+node_modules/
+
+/build/
