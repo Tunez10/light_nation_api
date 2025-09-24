@@ -7,10 +7,18 @@ import environ
 # BASE_DIR setup
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+env = environ.Env()
+environ.Env.read_env(os.path.join(BASE_DIR, ".env"))
+
 # SECRET KEY
 SECRET_KEY = env("SECRET_KEY")
 
 DEBUG = env.bool("DEBUG", default=True)
+
+PAYSTACK_SECRET_KEY = env("PAYSTACK_SECRET_KEY")
+PAYSTACK_PUBLIC_KEY = env("PAYSTACK_PUBLIC_KEY")
+FRONTEND_URL = env("FRONTEND_URL", default="http://localhost:5173")
+
 
 # Database
 DATABASES = {
@@ -47,6 +55,7 @@ INSTALLED_APPS = [
     # My apps
     'Product',
     'User',
+    'paymentapp',
 
     # Third-party
     'rest_framework',
@@ -165,10 +174,4 @@ FRONTEND_URL = 'http://localhost:5173'
 
 
 
-env = environ.Env()
-environ.Env.read_env(os.path.join(BASE_DIR, ".env"))
-
-PAYSTACK_SECRET_KEY = env("PAYSTACK_SECRET_KEY")
-PAYSTACK_PUBLIC_KEY = env("PAYSTACK_PUBLIC_KEY")
-FRONTEND_URL = env("FRONTEND_URL", default="http://localhost:5173")
 
